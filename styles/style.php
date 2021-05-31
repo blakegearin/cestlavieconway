@@ -99,7 +99,9 @@ main
 
 code
 {
-  font-family: monospace;
+  font-family: courier-std, monospace;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .center

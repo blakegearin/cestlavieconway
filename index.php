@@ -5,6 +5,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
     <link rel="stylesheet" href="styles/style.php">
     <link rel="stylesheet" href="styles/fonts.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://use.typekit.net/kqq2sfs.css">
   </head>
   <body>
     <div id="outer-wrapper">
