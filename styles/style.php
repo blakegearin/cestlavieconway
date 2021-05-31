@@ -97,6 +97,11 @@ main
   text-align: center;
 }
 
+code
+{
+  font-family: monospace;
+}
+
 .center
 {
   margin-left: auto;
