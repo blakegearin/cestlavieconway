@@ -144,7 +144,7 @@ main
   font-size: 1vw;
 }
 
-#toggles
+#preferences
 {
   width: 50%;
   margin-left: auto;
@@ -153,22 +153,22 @@ main
   table-layout: fixed;
 }
 
-#toggles td
+#preferences td
 {
   padding: .2em;
 }
 
-#toggles tr td[colspan="2"]
+#preferences tr td[colspan="2"]
 {
   font-weight: bold;
 }
 
-#toggles tr td:nth-child(odd):not([colspan="2"])
+#preferences tr td:nth-child(odd):not([colspan="2"])
 {
   text-align: right;
 }
 
-#toggles tr td:nth-child(even):not([colspan="2"])
+#preferences tr td:nth-child(even):not([colspan="2"])
 {
   text-align: left;
 }

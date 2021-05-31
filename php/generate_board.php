@@ -104,8 +104,13 @@ if(isset($_SESSION["round"])) {
       </code>
     </p>
   <div>
-  <table id='toggles'>
+  <table id='preferences'>
     <tbody>
+      <tr>
+        <td colspan='2'>
+          <h2>Preferences</h2>
+        </td>
+      </tr>
       <tr>
         <td colspan='2'>
           Cell Colors
@@ -166,16 +171,16 @@ if(isset($_SESSION["round"])) {
       </td>
     </tr>
     <tr>
-        <td>
-          <label class='switch'>
-            <input id='show-border' type='checkbox' $show_border>
-            <span class='slider'></span>
-          </label>
-        </td>
-        <td>
-          Show
-        </td>
-      </tr>
+      <td>
+        <label class='switch'>
+          <input id='show-border' type='checkbox' $show_border>
+          <span class='slider'></span>
+        </label>
+      </td>
+      <td>
+        Show
+      </td>
+    </tr>
   </table>
   ";
 }
