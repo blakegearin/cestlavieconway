@@ -47,9 +47,9 @@ if(isset($_SESSION["round"])) {
     $alive_color = $_SESSION["alive_color"];
   }
 
-  $text_color = "rgba(127, 127, 127, 0)";
+  $text_color = "#7f7f7f";
   if (isset($_SESSION["text_color"])) {
-    $text_color = $_SESSION["text_color"];
+    $text_color = hex2rgb($_SESSION["text_color"], 0);
   }
 
   echo "
