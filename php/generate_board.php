@@ -74,7 +74,36 @@ if(isset($_SESSION["round"])) {
 
   echo "
   <h1>C'est la Vie, Conway</h1>
-
+  <p>Click cells to make them alive or dead.</p>
+  <div class='flex-container'>
+    <table id='game-table' class='center table-border-color'>
+    <tbody>
+      {$html_board}
+    </tbody>
+    </table>
+    <p>
+      <button id='go'>Go</button>
+      <button id='stop' disabled>Stop</button>
+      <button id='next'>Next</button>
+      <button id='reset'>Reset</button>
+      <button id='clear'>Clear</button>
+    </p>
+    <div style='display:inline-block;'>
+      <p>
+        Round: <span id='round'>1</span>
+      </p>
+      <p>
+        Status: <span id='status'>Start</span>
+      </p>
+    </div>
+    <p>
+      Board State:
+      <br>
+      <code id='hex'>
+        {$hex_string}
+      </code>
+    </p>
+  <div>
   <table id='toggles'>
     <tbody>
       <tr>
@@ -148,35 +177,6 @@ if(isset($_SESSION["round"])) {
         </td>
       </tr>
   </table>
-  <p>
-    <button id='go'>Go</button>
-    <button id='stop' disabled>Stop</button>
-    <button id='next'>Next</button>
-    <button id='reset'>Reset</button>
-    <button id='clear'>Clear</button>
-  </p>
-  <div class='flex-container'>
-    <table id='game-table' class='center table-border-color'>
-    <tbody>
-      {$html_board}
-    </tbody>
-    </table>
-    <div style='display:inline-block;'>
-      <p>
-        Round: <span id='round'>1</span>
-      </p>
-      <p>
-        Status: <span id='status'>Start</span>
-      </p>
-    </div>
-    <p>
-      Board State:
-      <br>
-      <code id='hex'>
-        {$hex_string}
-      </code>
-    </p>
-  <div>
   ";
 }
 ?>
