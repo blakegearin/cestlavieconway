@@ -27,6 +27,7 @@ if(isset($_SESSION["round"])) {
 
   $binary = convert_multi_array($new_board);
   $hex = binhex($binary);
+  $_SESSION["last_board"] = $hex;
 
   $response = json_encode(
     [

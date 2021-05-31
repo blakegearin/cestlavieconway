@@ -92,15 +92,15 @@ for ($r = 0; $r < $grid_size; $r++) {
   array_push($new_board, $new_row);
 }
 
-$no_updates = $GLOBALS["board"] === $new_board;
-$revolving = $_SESSION["last_board"] === $new_board;
+$hex = binhex(convert_multi_array($new_board));
+
+$no_updates = $new_board === $GLOBALS["board"];
+$revolving = strcmp((string) $hex, (string) $_SESSION["last_board"]) === 0;
+
 if ($no_updates || $revolving) {
   $status = "stuck";
 }
-$_SESSION["last_board"] = $board;
-
-$binary = convert_multi_array($new_board);
-$hex = binhex($binary);
+$_SESSION["last_board"] = binhex(convert_multi_array($GLOBALS["board"]));
 
 $response = json_encode(
   [
