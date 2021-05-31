@@ -53,7 +53,7 @@ if(isset($_SESSION["round"])) {
   }
 
   echo "
-  <h1>C'est La Vie, Conway</h1>
+  <h1>C'est la Vie, Conway</h1>
 
   <p>
     <div>
