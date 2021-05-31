@@ -12,6 +12,13 @@
         include("php/generate_board.php");
       ?>
     </main>
+    <footer class="container-fluid w-100 py-3">
+      <div class="center">
+        <small class="text-muted">
+          Copyright © <?php include("php/get_copyright.php");?> Blake Gearin
+        </small>
+      </div>
+    </footer>
     <script src="scripts/jquery-3.6.0.min.js"></script>
     <script src="scripts/index.js"></script>
   </body>

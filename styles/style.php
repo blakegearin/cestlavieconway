@@ -39,6 +39,7 @@ h1
 button,
 label,
 p,
+small,
 span,
 td
 {
@@ -58,6 +59,7 @@ main
 {
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .alive
@@ -107,7 +109,7 @@ main
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   table-layout: fixed;
 }
 
@@ -202,4 +204,33 @@ input:checked + .slider:before
   -webkit-transform: translateX(21px);
   -ms-transform: translateX(21px);
   transform: translateX(21px);
+}
+
+
+element.style {
+}
+.center {
+    text-align: center;
+}
+footer div {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  margin-top: -151px;
+  text-rendering: auto;
+  background-attachment: fixed;
+  background-color: #131313;
+  clear: both;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+footer div small {
+  line-height: 3.25;
+  font-size: 80%;
+  font-weight: 400;
 }
