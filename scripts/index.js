@@ -13,21 +13,22 @@ function updateCell(element, updateHex) {
 
   if (type === "alive") {
     $(element).css("background-color", $("#alive-color")[0].value);
-    $(element).text(1);
+    $(element).find(".content").text(1);
   } else {
     $(element).css("background-color", $("#dead-color")[0].value);
-    $(element).text(0);
+    $(element).find(".content").text(0);
   }
 
   if (updateHex) {
     let hex = getBoardInHex();
+    console.debug(hex)
     setBoardId(hex);
   }
 }
 
 function readBoard() {
   let board = [];
-  let rows = $("#myTable tr");
+  let rows = $("#game-table tr");
 
   for (let r = 0; r < rows.length; r++) {
     let row = [];
@@ -35,12 +36,13 @@ function readBoard() {
 
     for (let c = 0; c < columns.length; c++) {
       let column = columns[c];
-      let value = parseInt($(column)[0].innerHTML);
+      let value = parseInt($(column).find(".content")[0].innerHTML)
       row.push(value);
     }
     board.push(row);
   }
 
+  console.log(board)
   return board;
 }
 
@@ -49,6 +51,7 @@ function setBoardId(hex) {
   let hexElement = $("#hex");
 
   hexElement.text("");
+  console.dir(hexString);
   hexElement.append(hexString);
 }
 
@@ -72,7 +75,7 @@ function setBoard(round, status, board, hex) {
 
   setBoardId(hex);
 
-  let rows = $("#myTable tr");
+  let rows = $("#game-table tr");
 
   for (let r = 0; r < rows.length; r++) {
     let columns = $(rows[r]).find("td");
@@ -99,7 +102,7 @@ function checkStop() {
 
 function go() {
   let stop = checkStop();
-  // console.log(stop);
+
   if (stop) {
     $("#go").prop("disabled", false);
     $("#stop").prop("disabled", true);
@@ -114,12 +117,13 @@ function go() {
         },
         success: function(data) {
           let response = JSON.parse(data);
+          // console.log(stop);
           let round = response[0];
           let status = response[1];
           let board = response[2];
           let hex = response[3];
           setBoard(round, status, board, hex);
-          go();
+          setTimeout(go, 500);
         }
       }
     );
@@ -250,12 +254,12 @@ function hexToRgb(hex, transparency) {
 
 $("#text-color").change(function() {
   let transparency = $("#show-text").prop("checked") ? 1 : 0;
-  $(`td`).css("color", hexToRgb(this.value, transparency));
+  $("td .content").css("color", hexToRgb(this.value, transparency));
   setPreferences();
 });
 
 $("#show-text").click(function() {
-  let currentColor = $("td").css("color");
+  let currentColor = $("td .content").css("color");
   let newColor = "";
 
   let checked = $("#show-text").prop("checked");
@@ -265,14 +269,14 @@ $("#show-text").click(function() {
     newColor = currentColor.substring(0, currentColor.length - 1) + `, 0)`;
   }
 
-  $("td").css("color", newColor)
+  $("td .content").css("color", newColor)
 });
 
 
 // Credit: https://stackoverflow.com/a/2014138/5988852
 $(function() {
   var isMouseDown = false, isHighlighted;
-  $("#myTable td").mousedown(function() {
+  $("#game-table td").mousedown(function() {
     isMouseDown = true;
     updateCell(this, true);
     return false; // Prevent text selection

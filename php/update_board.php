@@ -9,11 +9,6 @@ $board = $_POST["board"];
 GLOBAL $new_board;
 $new_board = array();
 
-GLOBAL $dead;
-$dead = "0";
-GLOBAL $alive;
-$alive = "1";
-
 GLOBAL $grid_size;
 $grid_size = count($board);
 

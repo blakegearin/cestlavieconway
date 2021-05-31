@@ -21,11 +21,11 @@ if(isset($_SESSION["round"])) {
     $columns = "";
 
     for ($c = 0; $c < $grid_size; $c++) {
-      $value = mt_rand(0,1);
+      $value = (string) mt_rand(0,1);
       $row[$c] = $value;
 
       $class = $value == 0 ? "dead" : "alive";
-      $columns = $columns . "<td id='r{$r}c{$c}' class='{$class}'>{$value}</td>";
+      $columns = $columns . "<td class='{$class}'><div id='r{$r}c{$c}' class='content'>{$value}</div></td>";
     }
     array_push($new_board, $row);
     $html_board .= "<tr>{$columns}</tr>";
@@ -55,20 +55,55 @@ if(isset($_SESSION["round"])) {
   echo "
   <h1>C'est la Vie, Conway</h1>
 
-  <p>
-    <div>
-      <input type='color' id='dead-color' name='dead' value='{$dead_color}'>
-      <label for='dead'>Dead</label>
-    </div>
-    <div>
-      <input type='color' id='alive-color' name='alive' value='{$alive_color}'>
-      <label for='alive'>Alive</label>
-    </div>
-    <div>
-      <input type='color' id='text-color' name='text' value='{$text_color}'>
-      <label for='alive'>Text</label>
-    </div>
-  </p>
+  <table id='toggles'>
+    <tbody>
+      <tr>
+        <td colspan='2'>
+          Cell Colors
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type='color' id='dead-color' name='dead' value='{$dead_color}'>
+        </td>
+        <td>
+          <label for='dead'>Dead</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type='color' id='alive-color' name='alive' value='{$alive_color}'>
+        </td>
+        <td>
+          <label for='alive'>Alive</label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan='2'>
+          Text
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type='color' id='text-color' name='text' value='{$text_color}'>
+        </td>
+        <td>
+          <label for='alive'>Color</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class='switch'>
+            <input id='show-text' type='checkbox'>
+            <span class='slider'></span>
+          </label>
+        </td>
+        <td>
+          Show
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     <button id='go'>Go</button>
     <button id='stop' disabled>Stop</button>
@@ -76,15 +111,8 @@ if(isset($_SESSION["round"])) {
     <button id='reset'>Reset</button>
     <button id='clear'>Clear</button>
   </p>
-  <p id =>
-    <label class='switch'>
-      <input id='show-text' type='checkbox'>
-      <span class='slider'></span>
-    </label>
-    <span>Show text</span>
-  </p>
   <div class='flex-container'>
-    <table id='myTable' class='center'>
+    <table id='game-table' class='center'>
     <tbody>
       {$html_board}
     </tbody>
@@ -98,7 +126,7 @@ if(isset($_SESSION["round"])) {
       </p>
     </div>
     <p>
-      Board ID:
+      Board State:
       <br>
       <code id='hex'>
         {$hex_string}
