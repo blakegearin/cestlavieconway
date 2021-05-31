@@ -27,8 +27,48 @@
   }
 ?>
 
-body {
-  background: #9F9F9F;
+html
+{
+  background-color: #131313;
+}
+
+body, html
+{
+  height: 100%;
+  margin: 0;
+}
+
+#outer-wrapper
+{
+  top: 0;
+  background-position: top left;
+  background-image: url("../img/newspaper.jpeg");
+  background-position: center center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: fixed;
+  min-width: 100%;
+  width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(3px);
+}
+
+#bg-overlay
+{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  background-color: rgba(255, 255, 255, .7);
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
 }
 
 h1
@@ -226,7 +266,7 @@ footer div {
 }
 
 .text-muted {
-  color: #6c757d;
+  color: #e2e2e2;
 }
 
 footer div small {

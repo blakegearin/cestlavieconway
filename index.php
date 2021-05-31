@@ -7,18 +7,22 @@
     <link rel="stylesheet" href="styles/fonts.css" type="text/css" charset="utf-8" />
   </head>
   <body>
-    <main>
-      <?php
-        include("php/generate_board.php");
-      ?>
-    </main>
-    <footer class="container-fluid w-100 py-3">
-      <div class="center">
-        <small class="text-muted">
-          Copyright © <?php include("php/get_copyright.php");?> Blake Gearin
-        </small>
-      </div>
-    </footer>
+    <div id="outer-wrapper">
+      <div id="bg-overlay"></div>
+    </div>
+      <main>
+        <?php
+          include("php/generate_board.php");
+        ?>
+      </main>
+      <footer class="container-fluid w-100 py-3">
+        <div class="center">
+          <small class="text-muted">
+            Copyright © <?php include("php/get_copyright.php");?> Blake Gearin
+          </small>
+        </div>
+      </footer>
+
     <script src="scripts/jquery-3.6.0.min.js"></script>
     <script src="scripts/index.js"></script>
   </body>
