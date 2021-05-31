@@ -83,7 +83,8 @@ small,
 span,
 td
 {
-  font: 1rem Raleway, serif;
+  font: 1.1rem Raleway, serif;
+  font-weight: 300;
 }
 
 input {
