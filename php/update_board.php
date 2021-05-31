@@ -13,7 +13,7 @@ GLOBAL $grid_size;
 $grid_size = count($board);
 
 function get_cell($r, $c) {
-  return $GLOBALS["board"][$r][$c];
+  return (int) $GLOBALS["board"][$r][$c];
 }
 
 function count_alive_neighbors($r, $c) {
@@ -65,12 +65,14 @@ function count_alive_neighbors($r, $c) {
 
 $status = "dead";
 for ($r = 0; $r < $grid_size; $r++) {
-  $row = $board[$r];
+  $row = $GLOBALS["board"][$r];
   $new_row = array();
   for ($c = 0; $c < $grid_size; $c++) {
-    $cell = $board[$r][$c];
+    $cell = get_cell($r, $c);
     $alive_neighbors = count_alive_neighbors($r, $c);
+
     if ($cell === $dead) {
+      // Reproduction
       if ($alive_neighbors === 3) {
         $new_row[$c] = $alive;
         $status = "alive";
@@ -78,6 +80,7 @@ for ($r = 0; $r < $grid_size; $r++) {
         $new_row[$c] = $dead;
       }
     } else if ($cell === $alive) {
+      // Underpopulation or overpopulation
       if ($alive_neighbors < 2 || $alive_neighbors > 3) {
         $new_row[$c] = $dead;
       } else {

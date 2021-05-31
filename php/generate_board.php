@@ -25,7 +25,7 @@ if(isset($_SESSION["round"])) {
       $row[$c] = $value;
 
       $class = $value == 0 ? "dead" : "alive";
-      $columns = $columns . "<td class='{$class}'><div id='r{$r}c{$c}' class='content'>{$value}</div></td>";
+      $columns = $columns . "<td><div id='r{$r}c{$c}' class='{$class} content'>{$value}</div></td>";
     }
     array_push($new_board, $row);
     $html_board .= "<tr>{$columns}</tr>";

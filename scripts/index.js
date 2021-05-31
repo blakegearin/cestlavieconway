@@ -4,24 +4,23 @@ function setStatus(text) {
 }
 
 function updateCell(element, updateHex) {
-  let td = $(element);
-  td.toggleClass("alive");
-  td.toggleClass("dead");
+  let content = $(element);
+  content.toggleClass("alive");
+  content.toggleClass("dead");
 
-  let type = td.hasClass("alive") ? "alive" : "dead";
+  let type = content.hasClass("alive") ? "alive" : "dead";
   setStatus("alive");
 
   if (type === "alive") {
     $(element).css("background-color", $("#alive-color")[0].value);
-    $(element).find(".content").text(1);
+    $(element).text(1);
   } else {
     $(element).css("background-color", $("#dead-color")[0].value);
-    $(element).find(".content").text(0);
+    $(element).text(0);
   }
 
   if (updateHex) {
     let hex = getBoardInHex();
-    console.debug(hex)
     setBoardId(hex);
   }
 }
@@ -32,17 +31,16 @@ function readBoard() {
 
   for (let r = 0; r < rows.length; r++) {
     let row = [];
-    let columns = $(rows[r]).find("td");
+    let columns = $(rows[r]).find(".content");
 
     for (let c = 0; c < columns.length; c++) {
       let column = columns[c];
-      let value = parseInt($(column).find(".content")[0].innerHTML)
+      let value = parseInt($(column)[0].innerHTML);
       row.push(value);
     }
     board.push(row);
   }
 
-  console.log(board)
   return board;
 }
 
@@ -51,7 +49,6 @@ function setBoardId(hex) {
   let hexElement = $("#hex");
 
   hexElement.text("");
-  console.dir(hexString);
   hexElement.append(hexString);
 }
 
@@ -72,13 +69,12 @@ function getBoardInHex() {
 
 function setBoard(round, status, board, hex) {
   $("#round").text(round);
-
   setBoardId(hex);
 
   let rows = $("#game-table tr");
 
   for (let r = 0; r < rows.length; r++) {
-    let columns = $(rows[r]).find("td");
+    let columns = $(rows[r]).find(".content");
 
     for (let c = 0; c < columns.length; c++) {
       let value = parseInt(board[r][c]);
@@ -117,13 +113,12 @@ function go() {
         },
         success: function(data) {
           let response = JSON.parse(data);
-          // console.log(stop);
           let round = response[0];
           let status = response[1];
           let board = response[2];
           let hex = response[3];
           setBoard(round, status, board, hex);
-          setTimeout(go, 500);
+          setTimeout(go, 5);
         }
       }
     );
@@ -155,15 +150,11 @@ $("#next").click(function() {
           board: readBoard()
         },
         success: function(data) {
-          // console.dir(data);
           let response = JSON.parse(data);
-          // console.dir(response);
           let round = response[0];
           let status = response[1];
           let board = response[2];
           let hex = response[3];
-          // let test = response[4];
-          // console.dir(test);
           setBoard(round, status, board, hex);
         }
       }
@@ -233,7 +224,7 @@ function setPreferences() {
         textColor: textColor
       },
       success: function(data) {
-        console.dir(data);
+        // console.dir(data);
       }
     }
   );
@@ -254,12 +245,12 @@ function hexToRgb(hex, transparency) {
 
 $("#text-color").change(function() {
   let transparency = $("#show-text").prop("checked") ? 1 : 0;
-  $("td .content").css("color", hexToRgb(this.value, transparency));
+  $(".content").css("color", hexToRgb(this.value, transparency));
   setPreferences();
 });
 
 $("#show-text").click(function() {
-  let currentColor = $("td .content").css("color");
+  let currentColor = $(".content").css("color");
   let newColor = "";
 
   let checked = $("#show-text").prop("checked");
@@ -269,14 +260,14 @@ $("#show-text").click(function() {
     newColor = currentColor.substring(0, currentColor.length - 1) + `, 0)`;
   }
 
-  $("td .content").css("color", newColor)
+  $(".content").css("color", newColor)
 });
 
 
 // Credit: https://stackoverflow.com/a/2014138/5988852
 $(function() {
   var isMouseDown = false, isHighlighted;
-  $("#game-table td").mousedown(function() {
+  $("#game-table .content").mousedown(function() {
     isMouseDown = true;
     updateCell(this, true);
     return false; // Prevent text selection
