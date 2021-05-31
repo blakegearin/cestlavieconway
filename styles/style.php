@@ -83,7 +83,8 @@ small,
 span,
 td
 {
-  font: 1.1rem Raleway, serif;
+  font-family: 'Raleway', serif;
+  font-size: 1.1rem;
   font-weight: 300;
 }
 
