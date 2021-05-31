@@ -206,11 +206,6 @@ $("#clear").click(function() {
   );
 });
 
-$("#dead-color, #alive-color").change(function() {
-  $(`.${this.id.replace("-color", "")}`).css("background-color", this.value);
-  setPreferences();
-});
-
 function hexToRgb(hex, transparency) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   let r = parseInt(result[1], 16);
@@ -225,8 +220,13 @@ function setPreferences() {
 
   let textColorHex = $("#text-color")[0].value;
   let showText = $("#show-text")[0].checked;
-  let transparency = showText ? 1 : 0;
-  let textColor = hexToRgb(textColorHex, transparency);
+  let textTransparency = showText ? 1 : 0;
+  let textColor = hexToRgb(textColorHex, textTransparency);
+
+  let borderColorHex = $("#border-color")[0].value;
+  let showBorder = $("#show-border")[0].checked;
+  let borderTransparency = showBorder ? 1 : 0;
+  let borderColor = hexToRgb(borderColorHex, borderTransparency);
 
   $.ajax(
     {
@@ -237,18 +237,38 @@ function setPreferences() {
         aliveColor: aliveColor,
         textColorHex: textColorHex,
         textColor: textColor,
-        showText: showText
+        showText: showText,
+        borderColorHex: borderColorHex,
+        borderColor: borderColor,
+        showBorder: showBorder
       },
-      success: function(data) {
-        // console.dir(data);
-      }
+      success: function(data) {}
     }
   );
 }
 
+$("#dead-color, #alive-color").change(function() {
+  $(`.${this.id.replace("-color", "")}`).css("background-color", this.value);
+
+  setPreferences();
+});
+
 $("#text-color").change(function() {
   let transparency = $("#show-text").prop("checked") ? 1 : 0;
   $(".content").css("color", hexToRgb(this.value, transparency));
+
+  setPreferences();
+});
+
+$("#border-color").change(function() {
+  let transparency = $("#show-border").prop("checked") ? 1 : 0;
+  let borderColor = hexToRgb(this.value, transparency);
+
+  let checked = $("#show-border").prop("checked");
+  if (checked) {
+    $(".table-border-color").css("border", `1px ${borderColor} solid`);
+  }
+
   setPreferences();
 });
 
@@ -263,7 +283,23 @@ $("#show-text").click(function() {
     newColor = currentColor.substring(0, currentColor.length - 1) + `, 0)`;
   }
 
-  $(".content").css("color", newColor)
+  $(".content").css("color", newColor);
+  setPreferences();
+});
+
+$("#show-border").click(function() {
+  let currentBorder = $(".table-border-color").css("border");
+  let newBorder = "";
+
+  let checked = $("#show-border").prop("checked");
+  if (checked) {
+    let borderColor = hexToRgb($("#border-color")[0].value, 1);
+    newBorder = `1px ${borderColor} solid`;
+  } else {
+    newBorder = "none";
+  }
+
+  $(".table-border-color").css("border", newBorder);
   setPreferences();
 });
 

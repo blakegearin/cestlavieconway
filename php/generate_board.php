@@ -25,7 +25,12 @@ if(isset($_SESSION["round"])) {
       $row[$c] = $value;
 
       $class = $value == 0 ? "dead" : "alive";
-      $columns = $columns . "<td><div id='r{$r}c{$c}' class='{$class} content'>{$value}</div></td>";
+      $columns = $columns .
+        "<td class='table-border-color'>
+          <div id='r{$r}c{$c}' class='{$class} content'>
+            {$value}
+          </div>
+        </td>";
     }
     array_push($new_board, $row);
     $html_board .= "<tr>{$columns}</tr>";
@@ -52,7 +57,20 @@ if(isset($_SESSION["round"])) {
     $text_color = $_SESSION["text_color_hex"];
   }
 
-  $show_text = $_SESSION["show_text"] === "true" ? "checked" : "";
+  $show_text = false;
+  if (isset($_SESSION["show_text"])) {
+    $show_border = $_SESSION["show_text"] === "true" ? "checked" : "";
+  }
+
+  $border_color = "#7f7f7f";
+  if (isset($_SESSION["border_color_hex"])) {
+    $border_color = $_SESSION["border_color_hex"];
+  }
+
+  $show_border = false;
+  if (isset($_SESSION["show_border"])) {
+    $show_border = $_SESSION["show_border"] === "true" ? "checked" : "";
+  }
 
   echo "
   <h1>C'est la Vie, Conway</h1>
@@ -66,18 +84,18 @@ if(isset($_SESSION["round"])) {
       </tr>
       <tr>
         <td>
-          <input type='color' id='dead-color' name='dead' value='{$dead_color}'>
+          <input type='color' id='dead-color' name='dead-color' value='{$dead_color}'>
         </td>
         <td>
-          <label for='dead'>Dead</label>
+          <label for='dead-color'>Dead</label>
         </td>
       </tr>
       <tr>
         <td>
-          <input type='color' id='alive-color' name='alive' value='{$alive_color}'>
+          <input type='color' id='alive-color' name='alive-color' value='{$alive_color}'>
         </td>
         <td>
-          <label for='alive'>Alive</label>
+          <label for='alive-color'>Alive</label>
         </td>
       </tr>
       <tr>
@@ -104,7 +122,31 @@ if(isset($_SESSION["round"])) {
           Show
         </td>
       </tr>
+      <tr>
+        <td colspan='2'>
+          Borders
+        </td>
+      </tr>
     </tbody>
+    <tr>
+      <td>
+        <input type='color' id='border-color' name='border-color' value='{$border_color}'>
+      </td>
+      <td>
+        <label for='border-color'>Color</label>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <label class='switch'>
+            <input id='show-border' type='checkbox' $show_border>
+            <span class='slider'></span>
+          </label>
+        </td>
+        <td>
+          Show
+        </td>
+      </tr>
   </table>
   <p>
     <button id='go'>Go</button>
@@ -114,7 +156,7 @@ if(isset($_SESSION["round"])) {
     <button id='clear'>Clear</button>
   </p>
   <div class='flex-container'>
-    <table id='game-table' class='center'>
+    <table id='game-table' class='center table-border-color'>
     <tbody>
       {$html_board}
     </tbody>

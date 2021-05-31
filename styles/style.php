@@ -20,6 +20,11 @@
   if (isset($_SESSION["text_color"])) {
     $text_color = $_SESSION["text_color"];
   }
+
+  $border_color = "none";
+  if (isset($_SESSION["border_color"]) && $_SESSION["show_border"] == "true") {
+    $border_color = $_SESSION["border_color"];
+  }
 ?>
 
 body {
@@ -63,14 +68,6 @@ main
 .dead
 {
   background-color: <?=$dead_color?>;
-}
-
-#table-border
-{
-  position: absolute;
-  display: flex;
-  width: 50%;
-  left: 25%;
 }
 
 #game-table
@@ -132,6 +129,11 @@ main
 #toggles tr td:nth-child(even):not([colspan="2"])
 {
   text-align: left;
+}
+
+.table-border-color
+{
+  border: 1px <?=$border_color?> solid;
 }
 
 
