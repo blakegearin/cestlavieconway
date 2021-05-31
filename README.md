@@ -1,5 +1,5 @@
 <p align="center">
-  <img id="logo" src="img/logo.png" class="center" alt="C'est la Vie, Conway logo" title="C'est la Vie, Conway logo" width="500" height="500"/>
+  <img id="logo" src="https://raw.githubusercontent.com/blakegearin/cestlavieconway/main/img/logo.svg" class="center" alt="C'est la Vie, Conway logo" title="C'est la Vie, Conway logo" width="500" height="500"/>
 </p>
 
 # C'est la Vie, Conway
