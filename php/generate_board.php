@@ -48,9 +48,11 @@ if(isset($_SESSION["round"])) {
   }
 
   $text_color = "#7f7f7f";
-  if (isset($_SESSION["text_color"])) {
-    $text_color = hex2rgb($_SESSION["text_color"], 0);
+  if (isset($_SESSION["text_color_hex"])) {
+    $text_color = $_SESSION["text_color_hex"];
   }
+
+  $show_text = $_SESSION["show_text"] === "true" ? "checked" : "";
 
   echo "
   <h1>C'est la Vie, Conway</h1>
@@ -94,7 +96,7 @@ if(isset($_SESSION["round"])) {
       <tr>
         <td>
           <label class='switch'>
-            <input id='show-text' type='checkbox'>
+            <input id='show-text' type='checkbox' $show_text>
             <span class='slider'></span>
           </label>
         </td>

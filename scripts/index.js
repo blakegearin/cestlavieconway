@@ -206,30 +206,6 @@ $("#clear").click(function() {
   );
 });
 
-function setPreferences() {
-  let deadColor = $("#dead-color")[0].value;
-  console.log(`deadColor is ${deadColor}`)
-  let aliveColor = $("#alive-color")[0].value;
-  console.log(`aliveColor is ${aliveColor}`)
-  let textColor = $("#text-color")[0].value;
-  console.log(`aliveColor is ${aliveColor}`)
-
-  $.ajax(
-    {
-      type: "POST",
-      url: "php/set_preference.php",
-      data: {
-        deadColor: deadColor,
-        aliveColor: aliveColor,
-        textColor: textColor
-      },
-      success: function(data) {
-        // console.dir(data);
-      }
-    }
-  );
-}
-
 $("#dead-color, #alive-color").change(function() {
   $(`.${this.id.replace("-color", "")}`).css("background-color", this.value);
   setPreferences();
@@ -241,6 +217,33 @@ function hexToRgb(hex, transparency) {
   let g = parseInt(result[2], 16);
   let b = parseInt(result[3], 16);
   return `rgba(${r}, ${g}, ${b}, ${transparency})`
+}
+
+function setPreferences() {
+  let deadColor = $("#dead-color")[0].value;
+  let aliveColor = $("#alive-color")[0].value;
+
+  let textColorHex = $("#text-color")[0].value;
+  let showText = $("#show-text")[0].checked;
+  let transparency = showText ? 1 : 0;
+  let textColor = hexToRgb(textColorHex, transparency);
+
+  $.ajax(
+    {
+      type: "POST",
+      url: "php/set_preference.php",
+      data: {
+        deadColor: deadColor,
+        aliveColor: aliveColor,
+        textColorHex: textColorHex,
+        textColor: textColor,
+        showText: showText
+      },
+      success: function(data) {
+        // console.dir(data);
+      }
+    }
+  );
 }
 
 $("#text-color").change(function() {
@@ -261,6 +264,7 @@ $("#show-text").click(function() {
   }
 
   $(".content").css("color", newColor)
+  setPreferences();
 });
 
 

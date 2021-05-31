@@ -92,7 +92,7 @@ for ($r = 0; $r < $grid_size; $r++) {
   array_push($new_board, $new_row);
 }
 
-$no_updates = $board === $new_board;
+$no_updates = $GLOBALS["board"] === $new_board;
 $revolving = $_SESSION["last_board"] === $new_board;
 if ($no_updates || $revolving) {
   $status = "stuck";

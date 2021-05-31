@@ -18,7 +18,7 @@
 
   $text_color = "rgba(127, 127, 127, 0)";
   if (isset($_SESSION["text_color"])) {
-    $text_color = hex2rgb($_SESSION["text_color"], 0);
+    $text_color = $_SESSION["text_color"];
   }
 ?>
 
