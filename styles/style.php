@@ -93,7 +93,7 @@ main
   text-align: center;
 }
 
-code
+textarea
 {
   font-family: courier-std, monospace;
   font-weight: 400;
