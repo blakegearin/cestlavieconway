@@ -283,3 +283,7 @@ footer div small {
   font-size: 80%;
   font-weight: 400;
 }
+
+footer a {
+  color: #FFFFFF;
+}

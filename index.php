@@ -19,7 +19,7 @@
       <footer class="container-fluid w-100 py-3">
         <div class="center">
           <small class="text-muted">
-            Copyright © <?php include("php/get_copyright.php");?> Blake Gearin
+            Copyright © <?php include("php/get_copyright.php");?> <a href="https://blakegearin.com">Blake Gearin</a>
           </small>
         </div>
       </footer>
