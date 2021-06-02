@@ -5,7 +5,7 @@ if (!session_id()) {
 
 if(!isset($_SESSION["round"])) {
   $_SESSION["round"] = 1;
-  $_SESSION["last_board"] = array();
+  $_SESSION["last_board"] = "";
 } else {
   $_SESSION["round"]++;
 }

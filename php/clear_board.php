@@ -6,7 +6,7 @@ include("global.php");
 
 if(isset($_SESSION["round"])) {
   $_SESSION["round"] = 1;
-  $_SESSION["last_board"] = array();
+  $_SESSION["last_board"] = "";
   $status = "start";
 
   GLOBAL $board;
@@ -27,13 +27,13 @@ if(isset($_SESSION["round"])) {
 
   $binary = convert_multi_array($new_board);
   $hex = binhex($binary);
-  $_SESSION["last_board"] = $hex;
+  $_SESSION["last_board"] = $binary;
 
   $response = json_encode(
     [
       $_SESSION["round"],
       $status,
-      $new_board,
+      $binary,
       $hex
     ]
   );

@@ -98,6 +98,8 @@ textarea
   font-family: courier-std, monospace;
   font-weight: 400;
   font-style: normal;
+  width: auto;
+  resize: none;
 }
 
 nav
@@ -118,7 +120,6 @@ nav div
   text-align: center;
 }
 
-
 .center
 {
   margin-left: auto;
@@ -134,6 +135,11 @@ nav div
 .dead
 {
   background-color: <?=$dead_color?>;
+}
+
+.error
+{
+  color: #790707;
 }
 
 #game-table
@@ -270,12 +276,6 @@ input:checked + .slider:before
   transform: translateX(21px);
 }
 
-
-element.style {
-}
-.center {
-    text-align: center;
-}
 footer div {
   position: fixed;
   left: 0;
@@ -340,4 +340,10 @@ footer a {
   {
     font-size: 1.25vw;
   }
+}
+
+#hex
+{
+  width: 200px;
+  height: 57px;
 }

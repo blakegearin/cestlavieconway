@@ -10,12 +10,9 @@ if(isset($_SESSION["round"])) {
 
   include("random_board.php");
 
-  $_SESSION["start_board"] = $new_board;
   $binary = convert_multi_array($new_board);
+  $_SESSION["start_board"] = $binary;
   $hex = binhex($binary);
-  // $hex_strings = str_split($hex, 25);
-  // $hex_string = nl2br(implode("\n", $hex_strings));
-  // $hex = str_replace(' ', '', $hex);
 
   $dead_color = "#FFFFFF";
   if (isset($_SESSION["dead_color"])) {
@@ -73,8 +70,9 @@ if(isset($_SESSION["round"])) {
     <p>
       Board State:
       <br>
-      <textarea id='hex' name='test' rows='4' cols='20'>{$hex}</textarea>
+      <textarea id='hex' name='test' rows='4' cols='23'>{$hex}</textarea>
     </p>
+    <p id='hex-error' class='error' hidden></p>
   <div>
   <table id='preferences'>
     <tbody>
