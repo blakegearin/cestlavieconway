@@ -161,26 +161,26 @@ if(isset($_SESSION["round"])) {
           Borders
         </td>
       </tr>
+      <tr>
+        <td>
+          <input type='color' id='border-color' name='border-color' value='{$border_color}'>
+        </td>
+        <td>
+          <label for='border-color'>Color</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class='switch'>
+            <input id='show-border' type='checkbox' $show_border>
+            <span class='slider'></span>
+          </label>
+        </td>
+        <td>
+          Show
+        </td>
+      </tr>
     </tbody>
-    <tr>
-      <td>
-        <input type='color' id='border-color' name='border-color' value='{$border_color}'>
-      </td>
-      <td>
-        <label for='border-color'>Color</label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label class='switch'>
-          <input id='show-border' type='checkbox' $show_border>
-          <span class='slider'></span>
-        </label>
-      </td>
-      <td>
-        Show
-      </td>
-    </tr>
   </table>
   ";
 }

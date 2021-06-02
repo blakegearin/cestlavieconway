@@ -158,7 +158,7 @@ code
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
   table-layout: fixed;
 }
 
