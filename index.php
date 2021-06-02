@@ -11,9 +11,14 @@
     <div id="outer-wrapper">
       <div id="bg-overlay"></div>
     </div>
+    <nav>
+      <div id="title">
+        C'est la Vie, Conway
+      </div>
+    </nav>
       <main>
         <?php
-          include("php/generate_board.php");
+          include("php/home.php");
         ?>
       </main>
       <footer class="container-fluid w-100 py-3">

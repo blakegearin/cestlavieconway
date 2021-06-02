@@ -71,11 +71,6 @@ body, html
   -webkit-filter: blur(8px);
 }
 
-h1
-{
-  font-family: 'Conv_RadioNewsman', serif;
-}
-
 button,
 label,
 p,
@@ -88,7 +83,8 @@ td
   font-weight: 300;
 }
 
-input {
+input
+{
   margin: .4rem;
 }
 
@@ -103,6 +99,25 @@ code
   font-weight: 400;
   font-style: normal;
 }
+
+nav
+{
+  background-color: #141414;
+  height: 50px;
+  display: table;
+  width: 100%;
+}
+
+nav div
+{
+  font-size: 1.9em;
+  font-family: 'Conv_RadioNewsman', serif;
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+  text-align: center;
+}
+
 
 .center
 {
