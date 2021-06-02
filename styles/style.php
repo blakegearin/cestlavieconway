@@ -138,7 +138,8 @@ nav div
 
 #game-table
 {
-  width: 30%;
+  width: 50%;
+  max-width: 500px;
   text-align: center;
   border-collapse: collapse;
 }
@@ -165,7 +166,6 @@ nav div
   right: 0;
   text-align: center;
   color: <?=$text_color?>;
-  font-size: 1vw;
 }
 
 #preferences
@@ -301,4 +301,43 @@ footer div small {
 
 footer a {
   color: #FFFFFF;
+}
+
+@media only screen and (max-width: 600px) {
+  #game-table td .content
+  {
+    font-size: 2vw;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #game-table td .content
+  {
+    font-size: 2vw;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #game-table td .content
+  {
+    font-size: 2vw;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  #game-table td .content
+  {
+    font-size: 1.5vw;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  #game-table td .content
+  {
+    font-size: 1.25vw;
+  }
 }
