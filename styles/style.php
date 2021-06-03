@@ -118,6 +118,7 @@ nav div
   vertical-align: middle;
   color: white;
   text-align: center;
+  padding: 10px;
 }
 
 .center
