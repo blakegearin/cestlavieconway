@@ -105,7 +105,7 @@ textarea
 nav
 {
   background-color: #141414;
-  height: 50px;
+  height: 85px;
   display: table;
   width: 100%;
 }

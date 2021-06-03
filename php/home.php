@@ -46,34 +46,32 @@ if(isset($_SESSION["round"])) {
 
   echo "
   <p>Click cells to make them alive or dead.</p>
-  <div class='flex-container'>
-    <table id='game-table' class='center table-border-color'>
-    <tbody>
-      {$html_board}
-    </tbody>
-    </table>
+  <table id='game-table' class='center table-border-color'>
+  <tbody>
+    {$html_board}
+  </tbody>
+  </table>
+  <p>
+    <button id='go'>Go</button>
+    <button id='stop' disabled>Stop</button>
+    <button id='next'>Next</button>
+    <button id='reset'>Reset</button>
+    <button id='clear'>Clear</button>
+  </p>
+  <div style='display:inline-block;'>
     <p>
-      <button id='go'>Go</button>
-      <button id='stop' disabled>Stop</button>
-      <button id='next'>Next</button>
-      <button id='reset'>Reset</button>
-      <button id='clear'>Clear</button>
+      Round: <span id='round'>1</span>
     </p>
-    <div style='display:inline-block;'>
-      <p>
-        Round: <span id='round'>1</span>
-      </p>
-      <p>
-        Status: <span id='status'>Start</span>
-      </p>
-    </div>
     <p>
-      Board State:
-      <br>
-      <textarea id='hex' name='test' rows='4' cols='23'>{$hex}</textarea>
+      Status: <span id='status'>Start</span>
     </p>
-    <p id='hex-error' class='error' hidden></p>
-  <div>
+  </div>
+  <p>
+    Board State:
+    <br>
+    <textarea id='hex' name='test' rows='4' cols='23'>{$hex}</textarea>
+  </p>
+  <p id='hex-error' class='error' hidden></p>
   <table id='preferences'>
     <tbody>
       <tr>
